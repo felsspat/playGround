@@ -22,6 +22,7 @@ module.exports = function (grunt) {
         }, jshint: {
             files: ['Gruntfile.js', 'src/js/**/*.js'],
             options: {
+                esnext: true,
                 globals: {
                     jQuery: true
                 }
