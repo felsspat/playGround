@@ -9,8 +9,20 @@ module.exports = function (grunt) {
                     "css/style.css" : "less/style.less"
                 }
             }
-        },
-        watch: {
+        }, uglify: {
+            my_target: {
+                files: {
+                    'js/main.min.js': ['node_modules/jquery/dist/jquery.js', 'jsSource/main.js']
+                }
+            }
+        }, jshint: {
+            files: ['Gruntfile.js', 'jsSource/**/*.js'],
+            options: {
+                globals: {
+                    jQuery: true
+                }
+            }
+        }, watch: {
             styles: {
                 files: ['less/**/*.less'], // which files to watch
                 tasks: ['less'],
@@ -51,6 +63,9 @@ module.exports = function (grunt) {
     //grunt.loadNpmTasks('grunt-webfont');
     //grunt.loadNpmTasks('grunt-svgstore');
     //grunt.registerTask('svgsprite', ['svgstore']);
+    grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-less');
-    grunt.registerTask('default', ['less']);
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.registerTask('default', ['less', 'jshint', 'uglify']);
 };

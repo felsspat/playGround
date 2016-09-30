@@ -1,5 +1,5 @@
 {
-  "name": "grunt skelett",
+  "name": "basic-project",
   "version": "0.0.1",
   "description": "",
   "main": "Gruntfile.js",
@@ -10,9 +10,10 @@
   "license": "",
   "devDependencies": {
     "grunt": "~0.4.5",
-    "grunt-contrib-jshint": "~0.10.0",
+    "grunt-contrib-jshint": "^0.10.0",
     "grunt-contrib-less": "^1.4.0",
     "grunt-contrib-watch": "^1.0.0",
+    "jquery": "^3.1.1",
     "less": "~2.7.1"
   }
 }
