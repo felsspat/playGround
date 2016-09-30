@@ -8,7 +8,7 @@ module.exports = function (grunt) {
                     plugins : [ new (require('less-plugin-autoprefix'))({browsers : [ "last 2 versions" ]}) ]
                 },
                 files: {
-                    "dist/css/style.css" : "less/style.less"
+                    "dist/css/style.css" : "src/less/style.less"
                 }
             }
         }, uglify: {
@@ -18,15 +18,24 @@ module.exports = function (grunt) {
                 }
             }
         }, jshint: {
-            files: ['Gruntfile.js', 'jsSource/**/*.js'],
+            files: ['Gruntfile.js', 'src/js/**/*.js'],
             options: {
                 globals: {
                     jQuery: true
                 }
             }
+        }, minifyHtml: {
+            options: {
+                cdata: true
+            },
+            dist: {
+                files: {
+                    'dist/index.html': 'src/html/index.htm'
+                }
+            }
         }, watch: {
             styles: {
-                files: ['less/**/*.less'], // which files to watch
+                files: ['src/less/**/*.less'], // which files to watch
                 tasks: ['less'],
                 options: {
                     nospawn: true
@@ -62,5 +71,5 @@ module.exports = function (grunt) {
          }*/
     });
     //grunt.registerTask('svgsprite', ['svgstore']);
-    grunt.registerTask('default', ['less', 'jshint', 'uglify']);
+    grunt.registerTask('default', ['less', 'jshint', 'uglify', 'minifyHtml']);
 };
