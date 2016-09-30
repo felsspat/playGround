@@ -41,6 +41,10 @@ module.exports = function (grunt) {
                     nospawn: true
                 }
             }
+        }, concurrent: {
+            html: ['newer:minifyHtml'],
+            js: ['newer:jshint', 'newer:uglify'],
+            css: ['newer:less']
         }
         /*
          webfont: { // Erstellt im Buildprozess eine Schriftart aus SVG-Dateien
@@ -71,5 +75,5 @@ module.exports = function (grunt) {
          }*/
     });
     //grunt.registerTask('svgsprite', ['svgstore']);
-    grunt.registerTask('default', ['newer:less', 'newer:jshint', 'newer:uglify', 'newer:minifyHtml']);
+    grunt.registerTask('default', ['concurrent:html', 'concurrent:js', 'concurrent:css']);
 };
