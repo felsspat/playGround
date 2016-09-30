@@ -1,18 +1,20 @@
 module.exports = function (grunt) {
+    require('jit-grunt')(grunt);
     grunt.initConfig({
         less: {
             development: {
                 options: {
-                    compress: true, yuicompress: true, optimization: 2
+                    compress: true, yuicompress: true, optimization: 2,
+                    plugins : [ new (require('less-plugin-autoprefix'))({browsers : [ "last 2 versions" ]}) ]
                 },
                 files: {
-                    "css/style.css" : "less/style.less"
+                    "dist/css/style.css" : "less/style.less"
                 }
             }
         }, uglify: {
             my_target: {
                 files: {
-                    'js/main.min.js': ['node_modules/jquery/dist/jquery.js', 'jsSource/main.js']
+                    'dist/js/main.min.js': ['node_modules/jquery/dist/jquery.js', 'jsSource/main.js']
                 }
             }
         }, jshint: {
@@ -59,13 +61,6 @@ module.exports = function (grunt) {
          }
          }*/
     });
-
-    //grunt.loadNpmTasks('grunt-webfont');
-    //grunt.loadNpmTasks('grunt-svgstore');
     //grunt.registerTask('svgsprite', ['svgstore']);
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-less');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.registerTask('default', ['less', 'jshint', 'uglify']);
 };
