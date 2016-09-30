@@ -1,14 +1,14 @@
 (function () {
     'use strict';
 
-    getPixelArray = function (r,g,b,a = 0) {
+    function getPixelArray(r,g,b,a = 0) {
         var data = [];
         data[0] = r;
         data[1] = g;
         data[2] = b;
         data[3] = a;
         return data;
-    };
+    }
 
     var frontCanvas = $('#front');
     var frontContext = frontCanvas.getContext('2d');
