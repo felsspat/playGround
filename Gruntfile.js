@@ -71,5 +71,5 @@ module.exports = function (grunt) {
          }*/
     });
     //grunt.registerTask('svgsprite', ['svgstore']);
-    grunt.registerTask('default', ['less', 'jshint', 'uglify', 'minifyHtml']);
+    grunt.registerTask('default', ['newer:less', 'newer:jshint', 'newer:uglify', 'newer:minifyHtml']);
 };
