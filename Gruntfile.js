@@ -1,5 +1,7 @@
 module.exports = function (grunt) {
     require('jit-grunt')(grunt);
+    require('time-grunt')(grunt);
+
     grunt.initConfig({
         less: {
             development: {
@@ -20,6 +22,7 @@ module.exports = function (grunt) {
         }, jshint: {
             files: ['Gruntfile.js', 'src/js/**/*.js'],
             options: {
+                esnext: true,
                 globals: {
                     jQuery: true
                 }
