@@ -1,10 +1,6 @@
 (function () {
     'use strict';
 
-    var Pixel= function(colour) {
-        this.colour = colour;
-    };
-
     var Color = function(r, g, b) {
         this.r = r;
         this.g = g;
@@ -19,28 +15,24 @@
         this.width = width;
         this.height = height;
 
-        this.mandelPixel = function(x,y) {
+        this.mandelColor = function(x,y) {
             this.x0 = (x / this.width) * 3.5 - 2.5; // -2.5 .. 1
             this.y0 = (y / this.height) * 2 - 1; // -1 .. 1
-            //console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-            //console.log('X: ' + x + 'x0' + this.x0);
             this.x = 0;
             this.y = 0;
             this.iteration = 0;
-            this.maxIteration = 255;
+            this.maxIteration = 85;
             this.xTemp = 0;
-            this.yTemp = 0;
 
             while ((this.x * this.x + this.y * this.y) < 4 && this.iteration < this.maxIteration) {
                 this.xTemp = this.x * this.x - this.y * this.y + this.x0;
-                this.yTemp = 2 * this.x * this.y + this.y0;
+                this.y = 2 * this.x * this.y + this.y0;
                 this.x = this.xTemp;
-                this.y = this.yTemp;
                 this.iteration++;
-                //console.log('X ' + this.x, ' Y ' + this.y + ' I ' + this.iteration);
+
             }
-            var colour = new Color(this.iteration, 0, 0);
-            return colour
+            var color = new Color(this.iteration / this.maxIteration * 255, 0, 0);
+            return color
 ;        };
     };
 
@@ -60,8 +52,6 @@
 
 
     $(document).ready(function(){
-        console.log('Start');
-        $('.wrapper').css('background-color', 'blue');
         var canvases = [$('#frontCanvas'),
                         $('#backCanvas'),
                         $('#leftCanvas'),
@@ -74,7 +64,6 @@
         var height = canvases[0].width();
         var canvasObjects = [];
         var mandel = new Mandel(width, height);
-        var maxColor = 0;
 
         $.each(canvases,function(index, value) {
             canvasObjects[index] = new CanvasObject(value[0]);
@@ -82,21 +71,12 @@
 
         for (var x = 0; x < width; x++) {
             for (var y = 0; y < height; y++) {
-                var color = mandel.mandelPixel(x,y);
-                if (color.r > maxColor) {
-                    maxColor = color.r;
-                }
-
-                console.log('X:' + x , 'Y:' + y + 'C:' + color);
+                var color = mandel.mandelColor(x,y);
 
                 $.each(canvasObjects ,function(index, canvas) {
                     canvas.putPixel(x, y, color);
                 });
             }
         }
-
-        $('.wrapper').css('background-color', 'white');
-        console.log(maxColor);
-        console.log('Done');
     });
 }());
