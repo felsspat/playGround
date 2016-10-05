@@ -19,12 +19,14 @@
 }
 
 .cube {
-	@width: 200px;
-	@height: 200px;
+	@size: 400px;
+	@width: @size;
+	@height: @size;
+	@depth: @size;
 	transform-style: preserve-3d;
 	width: @width;
 	height: @height;
-	animation: spin 5s infinite linear;
+	animation: spin 10s infinite linear;
 
 	div {
 		position: absolute;
@@ -39,7 +41,7 @@
 	}
 
 	.back {
-		transform: translateZ(-100px) rotateY(180deg);
+		transform: translateZ(-(@depth / 2)) rotateY(180deg);
 	}
 
 	.right {
@@ -59,7 +61,6 @@
 		transform-origin: bottom center;
 	}
 	.front {
-		transform: translateZ(100px);
-		background-color: lightgray;
+		transform: translateZ((@depth / 2));
 	}
 }

@@ -23,6 +23,7 @@ module.exports = function (grunt) {
             files: ['Gruntfile.js', 'src/js/**/*.js'],
             options: {
                 esnext: true,
+                loopfunc: true,
                 globals: {
                     jQuery: true
                 }
