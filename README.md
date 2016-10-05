@@ -1,3 +1,8 @@
-# Basic Project
+# Basic Grunt project:
 
-Fork your own repo (stolen from github, can't find the original file :( 7[Fork your own repo](/fork-your-own-repo.md))
+- CSS minification
+- Javascript validation and minification
+- Static HTML minification
+
+Fork your own repo:[Fork your own repo](/fork-your-own-repo.md)
+Found on github, can't find the original author :(
