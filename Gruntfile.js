@@ -56,6 +56,13 @@ module.exports = function (grunt) {
                     keepalive: true
                 }
             }
+        }, copy: {
+            main: {
+                expand: true,
+                cwd: 'dist',
+                src: '**',
+                dest: 'docs/'
+                }
         }
         /*
          webfont: { // Erstellt im Buildprozess eine Schriftart aus SVG-Dateien
@@ -87,5 +94,6 @@ module.exports = function (grunt) {
     });
     //grunt.registerTask('svgsprite', ['svgstore']);
     grunt.registerTask('default', ['concurrent:html', 'concurrent:js', 'concurrent:css']);
+    grunt.registerTask('publish', ['copy']);
     grunt.registerTask('server', ['connect']);
 };
