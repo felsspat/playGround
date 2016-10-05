@@ -1,12 +1,12 @@
 {
   "name": "basic-project",
-  "version": "0.0.1",
+  "version": "0.0.12",
   "description": "",
   "main": "Gruntfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Robin de Vries",
   "license": "",
   "devDependencies": {
     "grunt": "~0.4.5",
