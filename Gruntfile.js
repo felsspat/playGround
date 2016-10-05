@@ -10,13 +10,13 @@ module.exports = function (grunt) {
                     plugins : [ new (require('less-plugin-autoprefix'))({browsers : [ "last 2 versions" ]}) ]
                 },
                 files: {
-                    "docs/css/style.css" : "src/less/style.less"
+                    "dist/css/style.css" : "src/less/style.less"
                 }
             }
         }, uglify: {
             my_target: {
                 files: {
-                    'docs/js/main.min.js': ['node_modules/jquery/docs/jquery.js', 'src/js/main.js']
+                    'dist/js/main.min.js': ['node_modules/jquery/dist/jquery.js', 'src/js/main.js']
                 }
             }
         }, jshint: {
@@ -33,7 +33,7 @@ module.exports = function (grunt) {
             },
             dist: {
                 files: {
-                    'docs/index.html': 'src/html/index.htm'
+                    'dist/index.html': 'src/html/index.htm'
                 }
             }
         }, watch: {
@@ -52,7 +52,7 @@ module.exports = function (grunt) {
             server: {
                 options: {
                     port: 9001,
-                    base: 'docs',
+                    base: 'dist',
                     keepalive: true
                 }
             }
