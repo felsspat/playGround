@@ -32,8 +32,8 @@
 
             }
             var color = new Color(this.iteration / this.maxIteration * 255, 0, 0);
-            return color
-;        };
+            return color;
+        };
     };
 
     var CanvasObject = function(canvas) {
@@ -41,17 +41,17 @@
         this.canvas.width = $('canvas').parent().width();
         this.canvas.height = $('canvas').parent().height();
         this.context = this.canvas.getContext('2d');
-        this.putPixel = function(x,y, c) {
 
-            this.context.fillStyle = c.toString();
+        this.putPixel = function(x,y, color) {
+            this.context.fillStyle = color.toString();
             this.context.fillRect (x, y, 1, 1);
         };
 
         return this;
     };
 
-
     $(document).ready(function(){
+        var start = new Date().getTime();
         var canvases = [$('#frontCanvas'),
                         $('#backCanvas'),
                         $('#leftCanvas'),
@@ -71,12 +71,16 @@
 
         for (var x = 0; x < width; x++) {
             for (var y = 0; y < height; y++) {
-                var color = mandel.mandelColor(x,y);
 
-                $.each(canvasObjects ,function(index, canvas) {
+                var color = mandel.mandelColor(x, y);
+
+                $.each(canvasObjects, function(index, canvas) {
                     canvas.putPixel(x, y, color);
                 });
             }
         }
+
+        var end = new Date().getTime();
+        console.log('Done:' + (end - start));
     });
 }());
