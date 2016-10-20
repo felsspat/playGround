@@ -47,7 +47,8 @@ module.exports = function (grunt) {
             }
         }, concurrent: {
             html: ['newer:minifyHtml'],
-            js: ['newer:jshint', 'newer:uglify'],
+            //js: ['newer:jshint', 'newer:uglify'],
+            js: ['newer:jshint'],
             css: ['newer:less']
         }, connect: {
             server: {

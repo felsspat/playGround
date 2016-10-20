@@ -90,13 +90,13 @@
                 pixels[(y*width*4) + x*4 + 3] = (255 % color) * 2;
 
                 //$.each(canvasObjects, function(index, canvas) {
-                //var imageData = new ImageData(pixels, width, height);
-                //canvas.putImageData(imageData);
-                //  setTimeout(function(color) {
-                //console.log(canvas, x, y, color);
-                //canvas.putPixel(x, y, color);
-                //}, 1);
-                //});
+                    //var imageData = new ImageData(pixels, width, height);
+                    //canvas.putImageData(imageData);
+                  //  setTimeout(function(color) {
+                        //console.log(canvas, x, y, color);
+                        //canvas.putPixel(x, y, color);
+                    //}, 1);
+               //});
             }
         }
 
