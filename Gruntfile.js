@@ -16,7 +16,8 @@ module.exports = function (grunt) {
         }, uglify: {
             my_target: {
                 files: {
-                    'dist/js/main.min.js': ['node_modules/jquery/dist/jquery.js', 'src/js/main.js']
+                    'dist/js/main.min.js': ['node_modules/jquery/dist/jquery.js', 'src/js/main.js'],
+                    'dist/js/threetest.min.js': ['src/js/threetest.js']
                 }
             }
         }, jshint: {
@@ -34,7 +35,8 @@ module.exports = function (grunt) {
             },
             dist: {
                 files: {
-                    'dist/index.html': 'src/html/index.htm'
+                    'dist/index.html': 'src/html/index.htm',
+                    'dist/three.html': 'src/html/three.htm'
                 }
             }
         }, watch: {

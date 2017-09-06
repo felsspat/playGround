@@ -26,7 +26,7 @@
 	transform-style: preserve-3d;
 	width: @width;
 	height: @height;
-	animation: spin 10s infinite linear;
+	animation: spin 3s 1 linear;
 
 	div {
 		position: absolute;
@@ -62,5 +62,12 @@
 	}
 	.front {
 		transform: translateZ((@depth / 2));
+
+		ul {
+			position: absolute;
+			left: 0;
+			top: 0;
+			list-style: none;
+		}
 	}
 }
